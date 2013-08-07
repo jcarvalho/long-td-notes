@@ -1,0 +1,28 @@
+package pt.ist.longtx.domain;
+
+class Note {
+	String contents;
+}
+
+class NoteSystem {
+	String title;
+}
+
+relation DomainRootHasNoteSystem {
+	.pt.ist.fenixframework.DomainRoot playsRole domainRoot;
+	NoteSystem playsRole noteSystem;
+}
+
+relation NotesSystem {
+	NoteSystem playsRole system;
+	Note playsRole note {
+		multiplicity *;
+	}
+}
+
+relation DomainRootHasTransactionalContext {
+	.pt.ist.fenixframework.DomainRoot playsRole domainRoot;
+	.pt.ist.fenixframework.longtx.TransactionalContext playsRole transactionalContext {
+		multiplicity *;
+	}
+}
