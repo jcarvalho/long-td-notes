@@ -11,6 +11,7 @@ import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.Atomic.TxMode;
 import pt.ist.fenixframework.FenixFramework;
 import pt.ist.fenixframework.longtx.LongTransaction;
+import pt.ist.fenixframework.longtx.TransactionalContext;
 import pt.ist.longtx.domain.Note;
 
 import com.google.gson.JsonArray;
@@ -35,7 +36,19 @@ public class NoteResource {
             array.add(json);
         }
 
-        finalObject.addProperty("context", LongTransaction.getContextForThread() != null ? "Active" : "Inactive");
+        TransactionalContext ctx = LongTransaction.getContextForThread();
+        finalObject.addProperty("context", ctx == null ? null : ctx.getName());
+
+        JsonArray available = new JsonArray();
+        for (TransactionalContext ctxs : FenixFramework.getDomainRoot().getTransactionalContextSet()) {
+            JsonObject obj = new JsonObject();
+            obj.addProperty("id", ctxs.getExternalId());
+            obj.addProperty("name", ctxs.getName());
+            available.add(obj);
+        }
+
+        finalObject.add("contexts", available);
+
         finalObject.add("notes", array);
         return finalObject.toString();
     }

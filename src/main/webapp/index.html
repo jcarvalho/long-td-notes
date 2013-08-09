@@ -42,9 +42,17 @@
           Transactional Context: <span data-bind="text: context"></span>
 
           <p>
-            <a class="btn btn-warning" type="button" onclick="create()" data-bind="visible: context  === 'Inactive'">Create</a>
-            <a class="btn btn-success" type="button" onclick="commit()" data-bind="visible: context  === 'Active'">Commit</a>
-            <a class="btn btn-danger" type="button" onclick="rollback()" data-bind="visible: context  === 'Active'">Rollback</a>
+            <input type="text" data-bind="visible: !context, value: $root.newTxName" />
+            <a class="btn btn-warning" type="button" data-bind="visible: !context, click: $root.create">Create</a>
+            <a class="btn btn-success" type="button" onclick="commit()" data-bind="visible: context">Commit</a>
+            <a class="btn btn-danger" type="button" onclick="rollback()" data-bind="visible: context">De-Select</a>
+          </p>
+
+          <p data-bind="visible: !context">
+            Available Contexts:
+            <ul data-bind="foreach: contexts, visible: !context">
+              <li><a href="#" data-bind="text: name, click: $root.select"></a></li>
+            </ul>
           </p>
         </div>
 
