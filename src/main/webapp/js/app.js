@@ -54,6 +54,14 @@ $.getJSON("api/notes", function(data) {
 				},
 			});
 	    };
+	    this.hideIt = function(element) {
+	    	$.ajax({
+				url: 'api/longTx/delete/' + element.id,
+				success: function() {
+					location.reload();
+				},
+			});
+	    }
 	    this.select = function(element) {
 			$.ajax({
 				url: 'api/longTx/select/' + element.id,

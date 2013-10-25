@@ -29,6 +29,14 @@ public class LongTxResource {
     }
 
     @GET
+    @Path("/delete/{id}")
+    public Response delete(@PathParam("id") String id) {
+        TransactionalContext ctx = FenixFramework.getDomainObject(id);
+        deleteIt(ctx);
+        return Response.ok().build();
+    }
+
+    @GET
     @Path("/create/{name}")
     public Response create(@PathParam("name") String name) {
         doCreate(name);
@@ -66,6 +74,11 @@ public class LongTxResource {
     @Atomic(mode = TxMode.WRITE)
     public void doCreate(String name) {
         FenixFramework.getDomainRoot().addTransactionalContext(new TransactionalContext(name));
+    }
+
+    @Atomic(mode = TxMode.WRITE)
+    public void deleteIt(TransactionalContext ctx) {
+        ctx.setDomainRoot(null);
     }
 
 }

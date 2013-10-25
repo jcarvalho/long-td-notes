@@ -10,6 +10,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-glyphicons.css" rel="stylesheet">
   </head>
 
   <body>
@@ -51,7 +52,7 @@
           <p data-bind="visible: !context">
             Ongoing Operations:
             <ul data-bind="foreach: contexts, visible: !context">
-              <li><a href="#" data-bind="text: name, click: $root.select"></a></li>
+              <li><a href="#" data-bind="text: name, click: $root.select"></a>   <span class="glyphicon glyphicon-remove" data-bind="click: $root.hideIt"></span></li>
             </ul>
           </p>
         </div>
