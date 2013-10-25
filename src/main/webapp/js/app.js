@@ -62,7 +62,7 @@ $.getJSON("api/notes", function(data) {
 				},
 			});
 	    }
-    	this.newTxName = ko.observable('New Transaction');
+    	this.newTxName = ko.observable('');
     }
     ko.applyBindings(new ViewModel());
 })

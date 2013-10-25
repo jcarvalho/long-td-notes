@@ -29,11 +29,13 @@ public class SystemBootstrap implements ServletContextListener {
         system.setTitle("Dummy Title");
         FenixFramework.getDomainRoot().setNoteSystem(system);
 
-        for (int i = 0; i < 5; i++) {
-            Note note = new Note();
-            note.setContents("Note " + (i + 1));
-            system.addNote(note);
-        }
+        system.addNote(new Note("Introduce myself"));
+        system.addNote(new Note("What are Long Lived Transactions?"));
+        system.addNote(new Note("Why are they hard to implement?"));
+        system.addNote(new Note("Related Work"));
+        system.addNote(new Note("Solution"));
+        system.addNote(new Note("Performance Analysis"));
+
     }
 
 }
