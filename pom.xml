@@ -30,7 +30,7 @@
                     <stopPort>9999</stopPort>
                     <encoding>UTF-8</encoding>
                     <webApp>
-                        <contextPath>/notes</contextPath>
+                        <contextPath>/</contextPath>
                         <baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
                             <resourcesAsCSV>
                                 src/main/webapp
