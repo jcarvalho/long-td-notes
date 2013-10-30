@@ -28,6 +28,7 @@ public class SystemBootstrap implements ServletContextListener {
         NoteSystem system = new NoteSystem();
         system.setTitle("Dummy Title");
         FenixFramework.getDomainRoot().setNoteSystem(system);
+        FenixFramework.getDomainRoot().getTransactionalContextSet().clear();
 
         system.addNote(new Note("Introduce myself"));
         system.addNote(new Note("What are Long Lived Transactions?"));

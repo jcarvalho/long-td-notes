@@ -44,6 +44,14 @@ public class LongTxResource {
     }
 
     @GET
+    @Path("/reset")
+    public Response reset() {
+        SystemBootstrap.createIt();
+        request.getSession(true).removeAttribute(LongTxFilter.CONTEXT_KEY);
+        return Response.ok().build();
+    }
+
+    @GET
     @Path("/rollback")
     public Response rollback() {
         request.getSession(true).removeAttribute(LongTxFilter.CONTEXT_KEY);
