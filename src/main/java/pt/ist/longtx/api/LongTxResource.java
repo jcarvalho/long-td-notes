@@ -63,6 +63,7 @@ public class LongTxResource {
     private Response commitContext(TransactionalContext ctx) {
         try {
             ctx.commit(false);
+            ctx.setDomainRoot(null);
             request.getSession(true).removeAttribute(LongTxFilter.CONTEXT_KEY);
             return Response.ok().build();
         } catch (TransactionError e) {

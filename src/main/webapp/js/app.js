@@ -36,9 +36,6 @@ $.getJSON("api/notes", function(data) {
 			});
     	};
     	this.removeMe = function(element) {
-    		if(!confirm("Are you sure?")) {
-    			return;
-    		}
 			$.ajax({
 			  url: 'api/notes/remove/' + element.id,
 			  success: function() {

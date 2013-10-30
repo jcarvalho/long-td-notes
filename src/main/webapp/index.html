@@ -15,7 +15,7 @@
 
   <body>
 
-    <div class="container">
+    <div class="conftainer">
 
       <div class="jumbotron" data-bind="visible: false">
         <h1>Loading...</h1>
@@ -27,19 +27,19 @@
         <h1>AwesomeNotes</h1>
       </div>
 
-      <div class="row">
+      <div class="row-fluifd">
 
-        <div class="col-lg-6">
-          <ul data-bind="foreach: notes">
-            <li>
+        <div class="col-lg-7">
+          <div data-bind="foreach: notes">
+            <div>
               <input type="text" size="35" data-bind="value: contents" />
               <a class="btn btn-primary" type="button" data-bind="click: $root.editMe">Edit</a>
               <a class="btn btn-danger" type="button" data-bind="click: $root.removeMe">Remove</a>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-5">
           Operation: <span data-bind="text: context"></span>
 
           <p>
